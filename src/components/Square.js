@@ -6,6 +6,7 @@ export default class Square extends React.Component{
         <button
             className={"square " + this.props.shade}
             onClick={this.props.onClick}
+            style={this.props.style}
         >
         </button>
         );  
