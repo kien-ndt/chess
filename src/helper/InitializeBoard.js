@@ -32,5 +32,6 @@ export default function InitializeBoard() {
 
     squares[4] = new King(2);  
     squares[60] = new King(1);
+    // squares[60].style = "backgroundImage: null";
     return squares;
 }

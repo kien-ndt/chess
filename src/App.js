@@ -7,13 +7,34 @@ export default class App extends React.Component {
     super();
     this.state = {
       squares: InitializeBoard(),
-      player: 1
+      player: 1,
+      turn: 0
     }
   }
+
+  handleClick(i){
+    let squares = this.state.squares;
+    // this.state.squares = null;
+    console.log(i);
+    console.log(this.state);
+    squares[i].style={backgroundImage: "none"};
+    this.setState({
+      squares: squares,
+      player: 2,
+      turn: i
+    })
+  }
+
   render(){
     return (
       <div className="App">
-        <Board squares={this.state.squares}/>
+        <Board 
+          squares={this.state.squares}
+          onClick = {(i) => this.handleClick(i)}    
+        />
+        <div>
+          {this.state.turn}
+        </div>
       </div>
     );
   }
