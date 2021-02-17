@@ -8,21 +8,34 @@ export default class App extends React.Component {
     this.state = {
       squares: InitializeBoard(),
       player: 1,
-      turn: 0
+      turn: 0,
+      selected: -1
     }
   }
 
   handleClick(i){
     let squares = this.state.squares;
     // this.state.squares = null;
-    console.log(i);
-    console.log(this.state);
-    squares[i].style={backgroundImage: "none"};
-    this.setState({
-      squares: squares,
-      player: 2,
-      turn: i
-    })
+    if (this.state.selected == -1){
+      if (squares[i] != null){
+        this.setState({
+          squares: squares,
+          player: this.state.player,
+          turn: 0,
+          selected: i
+        })
+      }
+    }
+    else {
+      squares[i] = squares[this.state.selected];
+      squares[this.state.selected] = null;
+      this.setState({
+        squares: squares,
+        player: this.state.player,
+        turn: 0,
+        selected: -1
+      })
+    }
   }
 
   render(){
